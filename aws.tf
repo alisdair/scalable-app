@@ -20,6 +20,9 @@ resource "aws_instance" "web" {
   count         = "${var.web_count}"
   ami           = "ami-2757f631"
   instance_type = "t2.micro"
+  tags {
+    "Name" = "web ${count.index+1}/${var.web_count}"
+  }
 }
 
 output "public_ip" {
